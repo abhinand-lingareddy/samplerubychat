@@ -1,28 +1,9 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+This is a poc project for developing chat for expertiza using ruby, faye, Realtime Rails Partials.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Most of the web uses Http which uses TCP/IP transports. This means that the connection is initialed by client, server responds to the request and becomes ideal. For implementing a chat feature using the above technique requires the client to keep on poling so that it receives the latest messages from the server. Apart from this, there are ways that server initiates the communication with the client when there is data which is called push or comet. Both these techniques involve overhead of http and isn't a very good way for low latency applications.
+For a better way, we will use web sockets into place which provides persistent connections between a server and a client, which enables both to send data at any time.
+To implement this we are planning to use Faye which is a messaging system with publish-subscribe. It works on Bayeux protocol.
+We will have the messages of the chat displayed in a partial which is updated using Sync - Realtime Rails Partials.
